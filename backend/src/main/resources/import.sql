@@ -1,0 +1,2 @@
+INSERT INTO tb_user (username, password, genre) VALUES ('viniciusmontes@gmail.com', '$2a$12$OPzX3uwy6AGreTMMJSx.W.q9S3UfHgqFZcU8yv9xmesGXjrTSSrUO', 'MALE');
+INSERT INTO tb_user (username, password, genre) VALUES ('maria@gmail.com', '$2a$12$OPzX3uwy6AGreTMMJSx.W.q9S3UfHgqFZcU8yv9xmesGXjrTSSrUO', 'FEMALE');
