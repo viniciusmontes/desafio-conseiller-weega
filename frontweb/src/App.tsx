@@ -1,9 +1,15 @@
-import './App.css'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Auth from "./routes/Auth";
+import Home from "./routes/Home";
 
 export default function App() {
   return (
-    <>
-    <h1>Hello!</h1>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Auth />} />
+        <Route path="home" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
