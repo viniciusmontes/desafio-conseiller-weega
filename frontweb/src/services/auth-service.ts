@@ -10,5 +10,11 @@ export function loginRequest(loginData: LoginDTO) {
     data: loginData,
   };
 
-  return requestBackend(config);
+  return requestBackend(config).then((response) => {
+    if (response.data && response.data.genre) {
+      localStorage.setItem("userName", response.data.username);
+      localStorage.setItem("userGenre", response.data.genre);
+    }
+    return response;
+  });
 }

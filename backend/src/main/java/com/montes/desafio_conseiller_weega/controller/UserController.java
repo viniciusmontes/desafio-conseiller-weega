@@ -3,8 +3,10 @@ package com.montes.desafio_conseiller_weega.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import java.net.URI;
 
-import com.montes.desafio_conseiller_weega.entities.User;
+import com.montes.desafio_conseiller_weega.dto.UserDTO;
 import com.montes.desafio_conseiller_weega.services.UserService;
 
 @RestController
@@ -15,12 +17,20 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User user) {
+    public ResponseEntity<UserDTO> login(@RequestBody UserDTO user) {
         try {
-            userService.login(user);
-            return ResponseEntity.ok("Login bem-sucedido");
+            UserDTO userDTO = userService.login(user);
+            return ResponseEntity.ok(userDTO);
         } catch (RuntimeException e) {
-            return ResponseEntity.status(401).body(e.getMessage());
+            return ResponseEntity.status(401).body(null);
         }
+    }
+
+    @PostMapping
+    public ResponseEntity<UserDTO> insert(@RequestBody UserDTO dto) {
+        UserDTO newDto = userService.insert(dto);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(newDto.getId()).toUri();
+        return ResponseEntity.created(uri).body(newDto);
     }
 }
