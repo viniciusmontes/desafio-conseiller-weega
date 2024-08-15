@@ -9,6 +9,8 @@ import java.net.URI;
 import com.montes.desafio_conseiller_weega.dto.UserDTO;
 import com.montes.desafio_conseiller_weega.services.UserService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/auth")
 public class UserController {
@@ -17,7 +19,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/login")
-    public ResponseEntity<UserDTO> login(@RequestBody UserDTO user) {
+    public ResponseEntity<UserDTO> login(@RequestBody @Valid UserDTO user) {
         try {
             UserDTO userDTO = userService.login(user);
             return ResponseEntity.ok(userDTO);

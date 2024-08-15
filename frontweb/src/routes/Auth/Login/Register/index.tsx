@@ -59,10 +59,18 @@ export default function Register() {
             <input
               {...register("password", {
                 required: "Campo obrigatório",
+                minLength: {
+                  value: 6,
+                  message: "Senha deve ter no mínimo 6 caracteres",
+                },
+                maxLength: {
+                  value: 8,
+                  message: "Senha deve ter no máximo 8 caracteres",
+                },
               })}
               type="password"
               className={`form-control base-input ${
-                errors.password ? "is-invalid" : " "
+                errors.password ? "is-invalid" : ""
               }`}
               placeholder="Senha"
               name="password"

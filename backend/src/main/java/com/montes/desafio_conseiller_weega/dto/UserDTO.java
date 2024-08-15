@@ -3,9 +3,13 @@ package com.montes.desafio_conseiller_weega.dto;
 import com.montes.desafio_conseiller_weega.entities.Genre;
 import com.montes.desafio_conseiller_weega.entities.User;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class UserDTO {
     private Long id;
+    @NotBlank
     private String username;
+    @NotBlank
     private String password;
     private Genre genre;
 

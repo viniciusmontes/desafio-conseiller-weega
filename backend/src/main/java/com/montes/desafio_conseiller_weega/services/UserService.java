@@ -9,6 +9,7 @@ import com.montes.desafio_conseiller_weega.entities.User;
 import com.montes.desafio_conseiller_weega.repositories.UserRepository;
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 
 @Service
 public class UserService {
@@ -20,7 +21,7 @@ public class UserService {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Transactional
-    public UserDTO login(UserDTO dto) {
+    public UserDTO login(@Valid UserDTO dto) {
         User user = userRepository.findByUsername(dto.getUsername())
                 .orElseThrow(() -> new RuntimeException("Usuário não existe"));
 
