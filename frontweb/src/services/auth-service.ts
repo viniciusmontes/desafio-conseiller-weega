@@ -18,3 +18,14 @@ export function loginRequest(loginData: LoginDTO) {
     return response;
   });
 }
+
+export function registerRequest(registerData: LoginDTO) {
+  const config: AxiosRequestConfig = {
+    method: "POST",
+    url: "/auth/register",
+    data: registerData,
+  };
+
+  return requestBackend(config);
+    
+  };

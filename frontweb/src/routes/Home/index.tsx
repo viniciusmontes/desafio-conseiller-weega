@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import './styles.css';
+import ButtonIcon from "../../components/ButtonIcon";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [welcomeMessage, setWelcomeMessage] = useState("");
@@ -19,6 +21,9 @@ export default function Home() {
   return (
     <div className="home-container">
       <h1>{welcomeMessage}</h1>
+      <Link to={"/"}>
+      <ButtonIcon text="VOLTAR"/>
+      </Link>
     </div>
   );
 }

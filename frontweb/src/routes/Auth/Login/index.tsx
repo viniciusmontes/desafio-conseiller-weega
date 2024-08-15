@@ -1,13 +1,13 @@
-import './styles.css';
+import "./styles.css";
 
-import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-import Logo from '../../../assets/images/logo.png';
-import ButtonIcon from '../../../components/ButtonIcon';
-import { LoginDTO } from '../../../models/LoginDTO';
-import * as authService from '../../../services/auth-service';
+import Logo from "../../../assets/images/logo.png";
+import ButtonIcon from "../../../components/ButtonIcon";
+import { LoginDTO } from "../../../models/LoginDTO";
+import * as authService from "../../../services/auth-service";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -57,7 +57,6 @@ export default function Login() {
             {errors.username?.message}
           </div>
         </div>
-
         <div className="mb-2">
           <input
             {...register("password", {
@@ -76,6 +75,11 @@ export default function Login() {
         </div>
         <div className="login-submit">
           <ButtonIcon text="Fazer login" />
+        </div>
+        <div className="register-link">
+          <button className="btn" onClick={() => navigate("/register")}>
+            Criar novo usuário
+          </button>
         </div>
       </form>
     </div>
